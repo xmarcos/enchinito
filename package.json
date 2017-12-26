@@ -1,0 +1,33 @@
+{
+  "name": "enchinitobot",
+  "version": "0.0.0",
+  "description": "Un bot para Telegram que te lo dice en chinito",
+  "keywords": [
+    "telegram",
+    "bot",
+    "telegrambot",
+    "chinito",
+    "meme"
+  ],
+  "repository": {
+    "url": "xmarcos/enchinitoBOT",
+    "type": "git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "now-start": "micro-bot -d ${NOW_URL}",
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "engines": {
+    "node": ">=8.5.0"
+  },
+  "author": "Marcos Sader <xmarcos@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "micro-bot": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0"
+  }
+}
