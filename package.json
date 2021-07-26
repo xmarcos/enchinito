@@ -53,7 +53,7 @@
     "require": "./lib/cjs/enchinito.cjs"
   },
   "files": [
-    "lib"
+    "/lib"
   ],
   "homepage": "https://github.com/xmarcos/enchinito/#readme",
   "jest": {
@@ -96,7 +96,7 @@
     "test": "jest"
   },
   "type": "module",
-  "types": "./lib/cjs/enchinito.d.ts",
+  "types": "./lib/enchinito.d.ts",
   "version": "0.2.0",
   "volta": {
     "node": "14.17.3",
