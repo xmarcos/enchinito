@@ -1,5 +1,9 @@
 import { enChinito, enchinito, inchiniti } from './enchinito';
 
+test('type enChinito', () => {
+  expect(enChinito).toBeInstanceOf(Function);
+});
+
 test('madurar', () => {
   expect(
     enChinito('Oye, ¿en serio NO piensas madurar...       ?'),
@@ -44,8 +48,16 @@ test('💥 throws on 🇦🇷', () => {
   );
 });
 
+test('type enchinito', () => {
+  expect(enchinito).toBeInstanceOf(Function);
+});
+
 test('enchinito', () => {
   expect(enchinito('enchinito')).toBe('inchiniti');
+});
+
+test('type inchiniti', () => {
+  expect(inchiniti).toBeInstanceOf(Function);
 });
 
 test('inchiniti', () => {

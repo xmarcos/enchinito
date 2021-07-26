@@ -49,7 +49,7 @@
     ]
   },
   "exports": {
-    "import": "./src/enchinito.js",
+    "import": "./lib/esm/enchinito.js",
     "require": "./lib/cjs/enchinito.cjs"
   },
   "files": [
