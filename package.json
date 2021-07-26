@@ -80,6 +80,10 @@
     "trailingComma": "all",
     "useTabs": false
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "repository": "github:xmarcos/enchinito",
   "scripts": {
     "build": "yarn run rimraf lib && yarn run build:dts && yarn run build:cjs && yarn run build:esm",
@@ -94,9 +98,6 @@
   "type": "module",
   "types": "./lib/cjs/enchinito.d.ts",
   "version": "0.0.0",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "volta": {
     "node": "14.17.3",
     "yarn": "1.22.10"
