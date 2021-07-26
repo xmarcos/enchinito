@@ -97,7 +97,7 @@
   },
   "type": "module",
   "types": "./lib/cjs/enchinito.d.ts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "volta": {
     "node": "14.17.3",
     "yarn": "1.22.10"
