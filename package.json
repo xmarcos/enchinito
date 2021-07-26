@@ -28,7 +28,9 @@
     "jest": "^27.0.6",
     "jsdoc": "^3.6.7",
     "lint-staged": "^11.1.1",
+    "np": "^7.5.0",
     "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.54.0",
     "typescript": "^4.3.5"
   },
@@ -53,6 +55,7 @@
   "files": [
     "lib"
   ],
+  "homepage": "https://github.com/xmarcos/enchinito/#readme",
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "coverage",
@@ -77,13 +80,15 @@
     "trailingComma": "all",
     "useTabs": false
   },
+  "repository": "github:xmarcos/enchinito",
   "scripts": {
-    "build": "yarn run build:dts && yarn run build:cjs && yarn run build:esm",
+    "build": "yarn run rimraf lib && yarn run build:dts && yarn run build:cjs && yarn run build:esm",
     "build:cjs": "rollup src/enchinito.js --file lib/cjs/enchinito.cjs --format cjs",
     "build:dts": "tsc src/enchinito.js --declaration --allowJs --emitDeclarationOnly --outDir lib/",
     "build:esm": "rollup src/enchinito.js --file lib/esm/enchinito.js --format esm",
     "lint": "eslint",
     "prepare": "is-ci || husky install",
+    "prepublishOnly": "yarn run build && yarn run test",
     "test": "jest"
   },
   "type": "module",
