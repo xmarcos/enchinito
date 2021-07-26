@@ -89,12 +89,13 @@ export function inchiniti(text: string): string;
 
 ### But why?
 
-<img src="images/but-why.gif" align="right" width="300" />
+<img src="images/but-why.gif" align="right" width="250" />
 
-1. The _chinito_[<sup>1</sup>](#1) meme is very popular in Argentina 🇦🇷.
+1. The _chinito_[<sup id="a1">1</sup>](#f1) meme is very popular in Argentina 🇦🇷.
 2. I make lots of memes.
 3. I try to automate repetitive tasks whenever I can.
 4. I needed an excuse to explore building —and publishing— _modern_ node modules.
+5. I like lists with five items.
 
 ---
-AKA [mocking chinese boy](https://www.google.com/search?q=mocking+chinese+boy+meme&tbm=isch). <a href="#1">⤴️</a>
+<sup id="f1">1</sup> AKA [mocking chinese boy](https://www.google.com/search?q=mocking+chinese+boy+meme&tbm=isch). [⏎](#a1)
