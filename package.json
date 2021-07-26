@@ -93,7 +93,10 @@
   },
   "type": "module",
   "types": "./lib/cjs/enchinito.d.ts",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "volta": {
     "node": "14.17.3",
     "yarn": "1.22.10"
