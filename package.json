@@ -56,7 +56,8 @@
     "require": "./lib/cjs/enchinito.cjs"
   },
   "files": [
-    "/lib"
+    "/lib",
+    "/bin"
   ],
   "homepage": "https://github.com/xmarcos/enchinito/#readme",
   "jest": {
