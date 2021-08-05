@@ -87,6 +87,31 @@ export function enchinito(text: string): string;
 export function inchiniti(text: string): string;
 ```
 
+## CLI
+
+There is a command line wrapper that you can **install** globally with:
+
+```bash
+yarn global add @xmarcos/enchinito
+# or
+npm install --global @xmarcos/enchinito
+``
+
+and use it like:
+
+```bash
+enchinito "Sudo make me a sandwich"
+#Sidi miki mi i sindwich
+
+echo "killall -9 vim" | enchinito | figlet -f doom
+#  _    _ _ _ _ _ _          _____         _
+# | |  (_) | (_) | |        |  _  |       (_)
+# | | ___| | |_| | |  ______| |_| | __   ___ _ __ ___
+# | |/ / | | | | | | |______\____ | \ \ / / | '_ ` _ \
+# |   <| | | | | | |        .___/ /  \ V /| | | | | | |
+# |_|\_\_|_|_|_|_|_|        \____/    \_/ |_|_| |_| |_|
+```
+
 ### But why?
 
 <img src="images/but-why.gif" align="right" width="250" />
