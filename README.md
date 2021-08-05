@@ -95,7 +95,7 @@ There is a command line wrapper that you can **install** globally with:
 yarn global add @xmarcos/enchinito
 # or
 npm install --global @xmarcos/enchinito
-``
+```
 
 and use it like:
 
