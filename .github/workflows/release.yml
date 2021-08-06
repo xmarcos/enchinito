@@ -1,0 +1,34 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  release:
+    name: semantic-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: get node version
+        run: echo "::set-output name=NODE_VERSION::$(node -pe "require('./package.json').volta.node")"
+        id: node_version
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.node_version.outputs.NODE_VERSION }}
+          cache: 'yarn'
+      - name: install dependencies
+        env:
+          HUSKY: 0
+        run: yarn --frozen-lockfile
+      - name: run semantic-release
+        run: yarn semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
