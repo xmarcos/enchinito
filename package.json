@@ -15,12 +15,28 @@
   "bin": {
     "enchinito": "./bin/enchinito.cli.js"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
   "description": "Say it en chinito.",
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/cz-commitlint": "^13.1.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@types/jest": "^26.0.24",
     "babel-jest": "^27.0.6",
+    "commitizen": "^4.2.4",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -35,7 +51,12 @@
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.54.0",
+    "semantic-release": "^17.4.4",
     "typescript": "^4.3.5"
+  },
+  "engine-strict": true,
+  "engines": {
+    "node": ">=12"
   },
   "eslintConfig": {
     "env": {
@@ -88,12 +109,28 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
+  "release": {
+    "branches": [
+      "master",
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "tagFormat": "v${version}"
+  },
   "repository": "github:xmarcos/enchinito",
   "scripts": {
     "build": "yarn run rimraf lib && yarn run build:dts && yarn run build:cjs && yarn run build:esm",
     "build:cjs": "rollup src/enchinito.js --file lib/cjs/enchinito.cjs --format cjs",
     "build:dts": "tsc src/enchinito.js --declaration --allowJs --emitDeclarationOnly --outDir lib/",
     "build:esm": "rollup src/enchinito.js --file lib/esm/enchinito.js --format esm",
+    "commit": "git-cz",
     "lint": "eslint",
     "prepare": "is-ci || husky install",
     "prepublishOnly": "yarn run build && yarn run test",

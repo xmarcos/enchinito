@@ -2,20 +2,23 @@ name: test
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - main
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12, 14, 16]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Node v${{ matrix.node-version }}
+    - name: Run tests on node v${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
