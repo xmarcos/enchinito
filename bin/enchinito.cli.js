@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 import readline from 'readline';
 import { stdin, argv } from 'process';
+import fs from 'fs';
 // eslint-disable-next-line import/extensions
-import { enchinito } from '../src/enchinito.js';
+import { enchinito } from '../lib/esm/enchinito.js';
 
-const { log, error } = console;
-const rawArgs = argv.slice(2);
-const helpRegex = /^(-+|\/)(h(elp)?|\?)$/gi;
+const { log } = console;
+const args = argv.slice(2);
 const helpMessage = (_log = log) => {
-  _log(`USAGE: enchinito <string>
+  _log(`USAGE: enchinito [STRING]
 
         Say it en chinito.
 
@@ -19,13 +19,22 @@ OPTIONS:
             as a list (separated by line breaks) for easier processing.
         -h, --help:
             Display this message.
+        -v, --version:
+            Output version information and exit.
 `);
 };
-let showHelp = false;
-let unknownOption = false;
 
-// read from stdin
-if (stdin.isTTY !== true) {
+if (args.indexOf('--help') !== -1 || args.indexOf('-h') !== -1) {
+  helpMessage();
+  process.exit(0);
+}
+
+if (args.indexOf('--version') !== -1 || args.indexOf('-v') !== -1) {
+  log(`v${JSON.parse(fs.readFileSync('package.json', 'utf8')).version}`);
+  process.exit(0);
+}
+
+if (args.length === 0) {
   stdin.setEncoding('utf8');
   const input = readline.createInterface({ input: stdin });
   input
@@ -36,36 +45,7 @@ if (stdin.isTTY !== true) {
       process.exit(0);
     });
 } else {
-  const txt = rawArgs
-    .filter((arg) => {
-      if (helpRegex.exec(arg) !== null) {
-        showHelp = true;
-        return false;
-      }
-      if (arg.startsWith('-')) {
-        unknownOption = true;
-        return false;
-      }
-      return typeof arg === 'string';
-    })
-    .map((arg) => arg.trim());
-
-  if (
-    unknownOption ||
-    (rawArgs.length > 1 && txt.length === 0 && showHelp === false)
-  ) {
-    error(`ERROR: I don't know that to do with that.`);
-    helpMessage(error);
-    process.exit(1);
-  }
-
-  if (showHelp && txt.length === 0) {
-    helpMessage();
-    process.exit(0);
-  }
-
-  txt.forEach((arg) => {
+  args.forEach((arg) => {
     log(`${enchinito(arg)} `);
   });
-  process.exit(0);
 }

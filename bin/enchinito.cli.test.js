@@ -1,33 +1,40 @@
 import { spawn } from 'child_process';
 import path from 'path';
+import fs from 'fs';
 
 const filePath = `${path.resolve('bin/enchinito.cli.js')}`;
+
+test('--version', () => {
+  const enchinito = spawn('node', [filePath, '-v']);
+  const expectedVersion = `v${
+    JSON.parse(fs.readFileSync('package.json', 'utf8')).version
+  }`;
+  enchinito.stdout.on('data', (data) => {
+    expect(data.toString()).toMatch(expectedVersion);
+  });
+});
 
 test('it helps', () => {
   const enchinito = spawn('node', [filePath, '-h']);
   enchinito.stdout.on('data', (data) => {
-    expect(data.stdout).toContain('USAGE: enchinito <string>');
+    expect(data.toString()).toContain('USAGE: enchinito [STRING]');
   });
-  enchinito.kill('SIGKILL');
 });
 
 test('it speaks', () => {
   const input = 'Bonne fête des Mères! 🎉';
   const enchinito = spawn('node', [filePath, input]);
   enchinito.stdout.on('data', (data) => {
-    expect(data.stdout).toBe('Binni fîti dis Mìris! 🎉\n');
+    expect(data.toString()).toMatch('Binni fîti dis Mìris! 🎉');
   });
-  enchinito.kill('SIGKILL');
 });
 
 test('it pipes', () => {
   const input = 'Bonne fête des Mères! 🎉';
-  const echo = spawn('echo', [input]);
   const enchinito = spawn('node', [filePath]);
-
-  enchinito.stdout.pipe(echo.stdin);
   enchinito.stdout.on('data', (data) => {
-    expect(data.stdout).toBe('Binni fîti dis Mìris! 🎉\n');
+    expect(data.toString()).toMatch('Binni fîti dis Mìris! 🎉');
   });
-  enchinito.kill('SIGKILL');
+  enchinito.stdin.write(input);
+  enchinito.stdin.end();
 });
