@@ -62,7 +62,7 @@ npm i @xmarcos/enchinito
 import { enchinito } from '@xmarcos/enchinito';
 
 console.log(
-  enChinito('@xmarcos/enchinito is a useless node package')
+  enchinito('@xmarcos/enchinito is a useless node package')
 );
 
 // @xmircis/inchiniti is i isiliss nidi pickigi
