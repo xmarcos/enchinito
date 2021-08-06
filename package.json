@@ -15,12 +15,26 @@
   "bin": {
     "enchinito": "./bin/enchinito.cli.js"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
   "description": "Say it en chinito.",
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/cz-commitlint": "^13.1.0",
     "@types/jest": "^26.0.24",
     "babel-jest": "^27.0.6",
+    "commitizen": "^4.2.4",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -36,6 +50,10 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.54.0",
     "typescript": "^4.3.5"
+  },
+  "engine-strict": true,
+  "engines": {
+    "node": ">=12"
   },
   "eslintConfig": {
     "env": {
@@ -94,6 +112,7 @@
     "build:cjs": "rollup src/enchinito.js --file lib/cjs/enchinito.cjs --format cjs",
     "build:dts": "tsc src/enchinito.js --declaration --allowJs --emitDeclarationOnly --outDir lib/",
     "build:esm": "rollup src/enchinito.js --file lib/esm/enchinito.js --format esm",
+    "commit": "git-cz",
     "lint": "eslint",
     "prepare": "is-ci || husky install",
     "prepublishOnly": "yarn run build && yarn run test",
