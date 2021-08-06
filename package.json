@@ -70,7 +70,11 @@
     ],
     "plugins": [
       "prettier"
-    ]
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    }
   },
   "exports": {
     "import": "./lib/esm/enchinito.js",

@@ -1,7 +1,9 @@
 #!/usr/bin/env node
-import readline from 'readline';
+import { fileURLToPath } from 'url';
 import { stdin, argv } from 'process';
 import fs from 'fs';
+import path from 'path';
+import readline from 'readline';
 // eslint-disable-next-line import/extensions
 import { enchinito } from '../lib/esm/enchinito.js';
 
@@ -30,7 +32,12 @@ if (args.indexOf('--help') !== -1 || args.indexOf('-h') !== -1) {
 }
 
 if (args.indexOf('--version') !== -1 || args.indexOf('-v') !== -1) {
-  log(`v${JSON.parse(fs.readFileSync('package.json', 'utf8')).version}`);
+  const packageJson = path.join(
+    // @ts-ignore
+    path.dirname(fileURLToPath(import.meta.url)),
+    '../package.json',
+  );
+  log(`v${JSON.parse(fs.readFileSync(packageJson, 'utf8')).version}`);
   process.exit(0);
 }
 
@@ -46,6 +53,6 @@ if (args.length === 0) {
     });
 } else {
   args.forEach((arg) => {
-    log(`${enchinito(arg)} `);
+    log(`${enchinito(arg)}`);
   });
 }
