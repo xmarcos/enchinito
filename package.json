@@ -142,7 +142,7 @@
   },
   "type": "module",
   "types": "./lib/enchinito.d.ts",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "volta": {
     "node": "14.17.3",
     "yarn": "1.22.10"

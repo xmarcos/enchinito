@@ -1,3 +1,10 @@
+## [0.4.2](https://github.com/xmarcos/enchinito/compare/v0.4.1...v0.4.2) (2021-08-06)
+
+
+### Bug Fixes
+
+* **cli:** fix --version in cli ([2f89b0c](https://github.com/xmarcos/enchinito/commit/2f89b0c38a1da8e1e9643f24e4d7e813516b56e6))
+
 ## [0.4.1](https://github.com/xmarcos/enchinito/compare/v0.4.0...v0.4.1) (2021-08-06)
 
 
