@@ -1,4 +1,4 @@
-# enChinito
+# enchinito
 
 > Say it _en chinito_.
 
@@ -112,7 +112,11 @@ echo "killall -9 vim" | enchinito | figlet -f doom
 # |_|\_\_|_|_|_|_|_|        \____/    \_/ |_|_| |_| |_|
 ```
 
-### But why?
+## API
+
+*There is an ~~App~~ [API](https://github.com/xmarcos/enchinito-api) for that™.*
+
+## But why?
 
 <img src="images/but-why.gif" align="right" width="250" />
 
